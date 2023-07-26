@@ -6,24 +6,25 @@ import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import PlacesScreen from '../screens/PlacesScreen';
 
 
 const ProfileStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 
-
 function HomeStackScreens() {
     return (
         <HomeStack.Navigator>
             <HomeStack.Screen name="HomeScreen" component={HomeScreen} options={{title:""}}></HomeStack.Screen>
+            <HomeStack.Screen name="PlacesScreen" component={PlacesScreen}options={{title:""}}></HomeStack.Screen>
+
         </HomeStack.Navigator>
     )
 }
-
 function ProfileStackScreens() {
     return (
         <ProfileStack.Navigator>
-            <ProfileStack.Screen name="HomeScreen" component={ProfileScreen}></ProfileStack.Screen>
+            <ProfileStack.Screen name="HomeScreen" component={ProfileScreen}options={{title:""}}></ProfileStack.Screen>
         </ProfileStack.Navigator>
     )
 }
