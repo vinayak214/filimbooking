@@ -17,7 +17,6 @@ function HomeStackScreens() {
         <HomeStack.Navigator>
             <HomeStack.Screen name="HomeScreen" component={HomeScreen} options={{title:""}}></HomeStack.Screen>
             <HomeStack.Screen name="PlacesScreen" component={PlacesScreen}options={{title:""}}></HomeStack.Screen>
-
         </HomeStack.Navigator>
     )
 }
@@ -30,9 +29,6 @@ function ProfileStackScreens() {
 }
 
 const Tab = createBottomTabNavigator();
-
-
-
 
 function Navigation() {
 

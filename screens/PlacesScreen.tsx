@@ -1,16 +1,16 @@
 import { Pressable, StyleSheet, Text, View, SafeAreaView, TextInput, FlatList, ImageBackground } from 'react-native'
-import React, { useLayoutEffect, useEffect, useState } from 'react'
+import React, { useLayoutEffect, useEffect, useState, useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Feather from 'react-native-vector-icons/Feather'
+import { Place } from '../Context/PlaceContext'
+
 
 const PlacesScreen = () => {
 
     const navigation: any = useNavigation();
-
-    const [selectedCity, setSelectedCity] = useState("")
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -29,6 +29,9 @@ const PlacesScreen = () => {
             },
         })
     }, [])
+
+
+    const { selectedCity, setSelectedCity } = useContext<any>(Place);
 
     const places: any = [
         {
@@ -81,6 +84,13 @@ const PlacesScreen = () => {
         },
     ];
 
+    const selectCity = (city: any) => {
+        setSelectedCity(city)
+        setTimeout(() => {
+            navigation.navigate("HomeScreen")
+        }, 800)
+
+    }
     return (
         <SafeAreaView>
             <View style={{
@@ -106,15 +116,15 @@ const PlacesScreen = () => {
                 data={places}
                 renderItem={({ item, index }) =>
                     <Pressable
-                        onPress={() => console.log("clicked the item::" + item.place)}
+                        onPress={() => selectCity(item.place)}
                         style={{ marginHorizontal: 10, marginVertical: 20 }} >
                         <ImageBackground
                             imageStyle={{ borderRadius: 8 }}
                             style={{ width: 160, height: 100 }}
                             source={{ uri: item.image }}>
                             {selectedCity == item.place && (
-                                <View>
-                                    <AntDesign name='checkcircle' size={24} color="black"></AntDesign>
+                                <View style={{ marginLeft: 7, marginTop: 7 }}>
+                                    <AntDesign name='checkcircle' size={24} color="white"></AntDesign>
                                 </View>
                             )}
                             <View style={{ justifyContent: 'flex-end', flex: 1, marginBottom: 7, marginLeft: 10 }}>
