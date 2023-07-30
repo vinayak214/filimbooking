@@ -7,6 +7,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import PlacesScreen from '../screens/PlacesScreen';
+import MovieScreen from '../screens/MovieScreen';
+import TheatreScreen from '../screens/TheatreScreen';
+
 
 
 const ProfileStack = createNativeStackNavigator();
@@ -17,6 +20,8 @@ function HomeStackScreens() {
         <HomeStack.Navigator>
             <HomeStack.Screen name="HomeScreen" component={HomeScreen} options={{title:""}}></HomeStack.Screen>
             <HomeStack.Screen name="PlacesScreen" component={PlacesScreen}options={{title:""}}></HomeStack.Screen>
+            <HomeStack.Screen name="MovieScreen" component={MovieScreen}options={{title:""}}></HomeStack.Screen>
+            <HomeStack.Screen name="TheatreScreen" component={TheatreScreen}options={{title:""}}></HomeStack.Screen>
         </HomeStack.Navigator>
     )
 }

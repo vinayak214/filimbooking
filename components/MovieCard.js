@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, SafeAreaView, ImageBackground, Pressable, Dimensions, Image } from 'react-native'
 import React, { useLayoutEffect } from 'react'
+import { useNavigation } from '@react-navigation/native'
+
 
 const MovieCard = ({ value }) => {
-    console.log("data1235" + JSON.stringify(value))
+    const navigation = useNavigation();
 
     return (
         <SafeAreaView>
@@ -26,7 +28,12 @@ const MovieCard = ({ value }) => {
                 <View>
                     <Text style={{ color: 'black', fontSize: 15, fontWeight: "400", marginTop: 6 }}>{value.title.substr(0,15)}</Text>
                     <Text style={{ color: 'black', fontSize: 15, fontWeight: "400", marginTop: 6 }}>U/A .{value.original_language}</Text>
-                    <Pressable style={{
+                    <Pressable 
+                     onPress={()=>navigation.navigate("MovieScreen",{
+                        title:value.title,
+                        movieID:value.id
+                     })}
+                     style={{
                         backgroundColor: '#ffc40c',
                         borderRadius: 5,
                         padding: 10,
@@ -34,7 +41,7 @@ const MovieCard = ({ value }) => {
                         width: 100,
                         marginTop:4
                     }}>
-                        <Text style={{color: 'black'}}>BOOK</Text>
+                        <Text style={{textAlign:'center',color:'black',fontSize:15,fontWeight:"500"}}>BOOK</Text>
                     </Pressable>
                 </View>
             </Pressable>
